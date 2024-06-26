@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5jfu0mc4o5vd"]
+
+[ext_resource type="Script" path="res://login/LoginScreen.gd" id="1_s3att"]
+
+[node name="LoginScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s3att")
+
+[node name="Username" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -141.0
+offset_top = -51.0
+offset_right = 120.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "用戶名"
+
+[node name="Password" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = 2.0
+offset_right = 122.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "密碼"
+secret = true
+
+[node name="LoginButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.0
+offset_top = 44.0
+offset_right = 117.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "登入"
