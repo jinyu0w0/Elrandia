@@ -13,16 +13,28 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Setup Node.js environment
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
+    - name: Setup bsdiff
+      run: |
+        sudo apt-get install bsdiff
 
-    - name: Install dependencies
-      run: npm install
+    - name: Generate file hashes
+      run: |
+        # 生成文件哈希
+        find . -type f -exec sha256sum {} \; > hashes.txt
+        mkdir -p dist
+        mv hashes.txt dist/
 
-    - name: Build project
-      run: npm run build
+    - name: Generate incremental update
+      run: |
+        # 假設之前版本的文件保存在 previous_version 目錄中
+        mkdir -p previous_version
+        # 請確保 previous_version 目錄中包含之前版本的文件
+        for file in $(find . -type f); do
+          if [ -f previous_version/$file ]; then
+            bsdiff $file previous_version/$file $file.patch
+            mv $file.patch dist/
+          fi
+        done
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
